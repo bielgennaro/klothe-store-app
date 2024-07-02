@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { SafeAreaView, Text, View, Image } from "react-native";
 
 export default function HomeScreen() {
   const [images, setImages] = useState([]);
   const [loadProduct, setLoadProduct] = useState(false);
 
-  //TODO: Implementar API
+  //TODO: Implementar API de
   useEffect(() => {
-    // Exemplo
     fetch("http://localhost:3000/api/images")
       .then((response) => response.json())
       .then((data) => {
@@ -19,15 +19,15 @@ export default function HomeScreen() {
   }, []);
 
   return (
-    <div>
-      <h1>Home</h1>
+    <SafeAreaView>
+      <Text>Home</Text>
       {loadProduct && (
-        <div>
+        <View>
           {images.map((images, index) => (
-            <img key={index} src={images} alt={`Image ${index}`} />
+            <Image key={index} src={images} alt={`Image ${index}`} />
           ))}
-        </div>
+        </View>
       )}
-    </div>
+    </SafeAreaView>
   );
 }
